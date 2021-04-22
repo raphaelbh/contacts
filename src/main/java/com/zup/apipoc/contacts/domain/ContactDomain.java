@@ -1,10 +1,12 @@
 package com.zup.apipoc.contacts.domain;
 
 import com.zup.apipoc.commons.exceptions.RequiredFieldException;
+import com.zup.apipoc.commons.utils.StringUtils;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.Locale;
 import java.util.UUID;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -26,21 +28,19 @@ public class ContactDomain {
 
     public void sanitize() {
         if(this.email != null)
-        this.email.toLowerCase();
+        this.email = this.email.toLowerCase(Locale.ROOT);
     }
 
-    //    TODO: alterar para utilizar string utils para as validacoes
     public void validateState() {
-        if(nome == null || nome.trim().isEmpty()) {
+        if(StringUtils.isNullOrEmpty(nome)) {
             throw new RequiredFieldException("O campo nome não pode ser nulo ou vazio");
         }
-        if(telefone == null || telefone.trim().isEmpty()) {
+        if(StringUtils.isNullOrEmpty(telefone)) {
             throw new RequiredFieldException("O campo telefone não pode ser nulo ou vazio");
         }
-        if(email == null || email.trim().isEmpty()) {
+        if(StringUtils.isNullOrEmpty(email)) {
             throw new RequiredFieldException("O campo email não pode ser nulo ou vazio");
         }
     }
-
 
 }

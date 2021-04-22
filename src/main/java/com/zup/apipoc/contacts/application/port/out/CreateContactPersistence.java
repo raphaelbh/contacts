@@ -1,7 +1,7 @@
 package com.zup.apipoc.contacts.application.port.out;
 
-import com.zup.apipoc.contacts.adapter.out.persistence.entities.ContactEntity;
+import com.zup.apipoc.contacts.adapter.out.persistence.entities.ContactJpaEntity;
 
 public interface CreateContactPersistence {
-    void save(ContactEntity contactEntity);
+    void save(ContactJpaEntity contactEntity);
 }

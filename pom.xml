@@ -74,6 +74,11 @@
 			<artifactId>lombok</artifactId>
 			<groupId>org.projectlombok</groupId>
 		</dependency>
+		<dependency>
+			<artifactId>modelmapper</artifactId>
+			<groupId>org.modelmapper</groupId>
+			<version>2.3.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
