@@ -1,46 +1,59 @@
 package com.zup.apipoc.contacts.domain;
 
 import com.zup.apipoc.commons.exceptions.RequiredFieldException;
-import com.zup.apipoc.commons.utils.StringUtils;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
-import java.util.Locale;
-import java.util.UUID;
+import com.zup.apipoc.contacts.domain.exceptions.InvalidNameException;
+import lombok.*;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.Optional;
+
+@Builder
+@EqualsAndHashCode
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ContactDomain {
 
-//    TODO: use Optional
-
-    @Getter private UUID id;
-
-    @Getter private String nome;
-
-    @Getter private String telefone;
-
-    @Getter private String email;
-
-    public static ContactDomain create(String nome, String telefone, String email) {
-        return new ContactDomain(UUID.randomUUID(), nome, telefone, email);
-    }
+    @Getter @Setter private Optional<String> id;
+    @Getter @Setter private Optional<String> name;
+    @Getter @Setter private Optional<String> phone;
+    @Getter @Setter private Optional<String> email;
 
     public void sanitize() {
-        if(this.email != null)
-        this.email = this.email.toLowerCase(Locale.ROOT);
+
+        if (email.isPresent()) {
+            email = Optional.of(email.get().toLowerCase());
+        }
+
     }
 
-    public void validateState() {
-        if(StringUtils.isNullOrEmpty(nome)) {
-            throw new RequiredFieldException("O campo nome não pode ser nulo ou vazio");
+    public void validate() {
+        validateRequiredFields();
+        validateNameField();
+    }
+
+    private void validateRequiredFields() {
+
+        if (name.isEmpty() || StringUtils.isBlank(name.get())) {
+            throw new RequiredFieldException("Name field not informed.");
         }
-        if(StringUtils.isNullOrEmpty(telefone)) {
-            throw new RequiredFieldException("O campo telefone não pode ser nulo ou vazio");
+
+        if (phone.isEmpty() || StringUtils.isBlank(phone.get())) {
+            throw new RequiredFieldException("Phone field not informed.");
         }
-        if(StringUtils.isNullOrEmpty(email)) {
-            throw new RequiredFieldException("O campo email não pode ser nulo ou vazio");
+
+        if (email.isEmpty() || StringUtils.isBlank(email.get())) {
+            throw new RequiredFieldException("Email field not informed.");
         }
+
+    }
+
+    private void validateNameField() {
+
+        if (name.isEmpty() || name.get().length() > 256) {
+            throw new InvalidNameException("The name is longer than 256 characters.");
+        }
+
     }
 
 }

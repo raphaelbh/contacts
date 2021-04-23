@@ -1,22 +1,18 @@
 package com.zup.apipoc.contacts.adapter.in.web.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
 @NoArgsConstructor
-public class ContactResponse {
+@AllArgsConstructor
+public class ContactResponse implements Serializable {
 
-    @Getter @Setter private UUID id;
-
-    @Getter @Setter private String nome;
-
-    @Getter @Setter private String telefone;
-
+    @Getter @Setter private String id;
+    @Getter @Setter private String name;
+    @Getter @Setter private String phone;
     @Getter @Setter private String email;
 
 }

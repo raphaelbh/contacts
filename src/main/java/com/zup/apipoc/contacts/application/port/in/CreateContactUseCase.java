@@ -1,7 +1,9 @@
 package com.zup.apipoc.contacts.application.port.in;
 
+import com.zup.apipoc.contacts.domain.ContactDomain;
 
 public interface CreateContactUseCase {
-     void create(final CreateContactCommand command);
+
+     ContactDomain execute(final CreateContactCommand command);
 
 }
