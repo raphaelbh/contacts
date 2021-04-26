@@ -6,13 +6,14 @@ import com.zup.apipoc.contacts.adapter.out.persistence.dynamodb.repositories.Con
 import com.zup.apipoc.contacts.adapter.out.persistence.dynamodb.tables.ContactTable;
 import com.zup.apipoc.contacts.application.port.out.ContactPersistence;
 import com.zup.apipoc.contacts.domain.ContactDomain;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 
 
 import java.util.List;
 
 @PersistenceAdapter
+@Primary
 public class ContactPersistenceDynamoDBAdapter implements ContactPersistence {
 
     private final ContactTableMapper contactTableMapper;
