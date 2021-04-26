@@ -8,19 +8,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(MockitoExtension.class)
-public class ContactPersistenceMemoryAdapterTest {
-
-    @Mock
-    private ContactEntityMapper contactMapper;
-
-    @InjectMocks
-    private ContactPersistenceMemoryAdapter adapter;
-
-    @Test
-    public void save() {}
-
-    @Test
-    public void getAll() {}
-
-}
+//@ExtendWith(MockitoExtension.class)
+//public class ContactPersistenceMemoryAdapterTest {
+//
+//    @Mock
+//    private ContactEntityMapper contactMapper;
+//
+//    @InjectMocks
+//    private ContactPersistenceMemoryAdapter adapter;
+//
+//    @Test
+//    public void save() {}
+//
+//    @Test
+//    public void getAll() {}
+//
+//}
