@@ -2,11 +2,14 @@ package com.zup.apipoc.contacts.domain;
 
 import com.zup.apipoc.commons.exceptions.RequiredFieldException;
 
+import com.zup.apipoc.contacts.domain.exceptions.InvalidEmailException;
 import com.zup.apipoc.contacts.domain.exceptions.InvalidNameException;
 import lombok.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Builder
 @EqualsAndHashCode
@@ -30,6 +33,7 @@ public class ContactDomain {
     public void validate() {
         validateRequiredFields();
         validateNameField();
+        validateEmail();
     }
 
     private void validateRequiredFields() {
@@ -54,6 +58,15 @@ public class ContactDomain {
             throw new InvalidNameException("The name is longer than 256 characters.");
         }
 
+    }
+
+    private void validateEmail() {
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email.get());
+        if(!matcher.matches()) {
+            throw new InvalidEmailException("the email is invalid.");
+        }
     }
 
 }
