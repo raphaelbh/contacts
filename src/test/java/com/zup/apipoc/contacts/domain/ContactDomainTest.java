@@ -1,6 +1,6 @@
 package com.zup.apipoc.contacts.domain;
 
-import com.zup.apipoc.commons.exceptions.InvalidFieldException;
+import com.zup.apipoc.commons.exceptions.InvalidDomainException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +29,7 @@ class ContactDomainTest {
                 .phone("999999999")
                 .email("doe@email.com").build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
@@ -41,7 +41,7 @@ class ContactDomainTest {
                 .phone(null)
                 .email("doe@email.com").build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
@@ -53,7 +53,7 @@ class ContactDomainTest {
                 .phone("999999999")
                 .email(null).build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
@@ -70,7 +70,7 @@ class ContactDomainTest {
                 .phone("999999999")
                 .email("doe@email.com").build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
@@ -94,7 +94,7 @@ class ContactDomainTest {
                 .email("roberto.email.com")
                 .build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
     @Test
@@ -105,7 +105,7 @@ class ContactDomainTest {
                 .phone("99999-9999")
                 .email(null).build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
     @Test
@@ -117,7 +117,7 @@ class ContactDomainTest {
                 .email("roberto@gmail.com")
                 .build();
 
-        assertThrows(InvalidFieldException.class, contact::validate);
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
 }

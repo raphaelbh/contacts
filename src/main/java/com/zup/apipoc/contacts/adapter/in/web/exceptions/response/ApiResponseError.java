@@ -22,12 +22,18 @@ public class ApiResponseError {
 
     @Getter @Setter private String message;
 
-    @Getter @Setter private List<String> apiResponseFieldErrors;
+    @Getter @Setter private List<String> fieldErrors;
 
 
     public ApiResponseError(HttpStatus status, String message) {
         this.status = status;
         this.message = message;
+    }
+
+    public ApiResponseError(HttpStatus status, String message, List<String> fieldErrors) {
+        this.status = status;
+        this.message = message;
+        this.fieldErrors = fieldErrors;
     }
 
 
