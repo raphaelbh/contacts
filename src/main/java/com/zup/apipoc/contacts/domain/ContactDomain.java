@@ -23,8 +23,8 @@ public class ContactDomain {
 
      @Getter @Setter
      @NotBlank
-     @Size(max = 256)
-     private  String name;
+     @Size(min = 10, max = 256)
+     private String name;
 
      @Getter @Setter
      @NotBlank

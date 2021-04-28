@@ -103,4 +103,42 @@ public class ContactDomainTest {
         assertEquals("doe@email.com", contact.getEmail());
     }
 
+    @Test
+    public void validateEmail() {
+        assertThrows(InvalidFieldException.class, () -> {
+            var contact = ContactDomain.builder()
+                    .name("Roberto Danilo")
+                    .phone("980469820")
+                    .email("roberto.email.com")
+                    .build();
+
+            contact.validate();
+        });
+    }
+
+    @Test
+    public void validatePhoneOnlyNumber() {
+        assertThrows(InvalidFieldException.class, () -> {
+            var contact = ContactDomain.builder()
+                    .name("Roberto Danilo")
+                    .phone("99999-9999")
+                    .email(null).build();
+
+            contact.validate();
+        });
+    }
+
+    @Test
+    public void validatePhoneSizeNumber() {
+        assertThrows(InvalidFieldException.class, () -> {
+            var contact = ContactDomain.builder()
+                    .name("Roberto Danilo")
+                    .phone("9999999999")
+                    .email("roberto@gmail.com")
+                    .build();
+
+            contact.validate();
+        });
+    }
+
 }
