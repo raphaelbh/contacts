@@ -20,7 +20,7 @@ public class RestResponseEntityExceptionHandler  extends ResponseEntityException
     public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidDomainException ex) {
         var response = new ApiResponseError();
         response.setStatus(HttpStatus.BAD_REQUEST);
-        response.setMessage(response.getMessage());
+        response.setMessage(ex.getMessage());
         response.setFieldErrors(ex.getFieldErrors());
         return buildResponseEntity(response);
     }
