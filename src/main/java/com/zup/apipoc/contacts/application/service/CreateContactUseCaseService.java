@@ -7,25 +7,26 @@ import com.zup.apipoc.contacts.application.port.out.ContactPersistence;
 import com.zup.apipoc.contacts.domain.ContactDomain;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Optional;
-
 @UseCase
 @RequiredArgsConstructor
 public class CreateContactUseCaseService implements CreateContactUseCase {
 
     private final ContactPersistence contactPersistence;
 
+
     public ContactDomain execute(final CreateContactCommand command) {
 
         var contact = ContactDomain.builder()
-                .id(Optional.empty())
+                .id(null)
                 .name(command.getName())
                 .phone(command.getPhone())
                 .email(command.getEmail()).build();
 
         contact.validate();
+
         contact.sanitize();
 
         return contactPersistence.save(contact);
     }
+
 }

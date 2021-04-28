@@ -12,8 +12,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CreateContactRequest implements Serializable {
 
-    @Getter @Setter private Optional<String> name;
-    @Getter @Setter private Optional<String> phone;
-    @Getter @Setter private Optional<String> email;
+    @Getter @Setter private String name;
+    @Getter @Setter private String phone;
+    @Getter @Setter private String email;
 
 }

@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @PersistenceAdapter
@@ -27,7 +26,7 @@ public class ContactPersistenceMemoryAdapter implements ContactPersistence {
         contactEntity.setId(UUID.randomUUID().toString());
 
         contactsDatabase.add(contactEntity);
-        contact.setId(Optional.of(contactEntity.getId()));
+        contact.setId(contactEntity.getId());
 
         return contact;
     }

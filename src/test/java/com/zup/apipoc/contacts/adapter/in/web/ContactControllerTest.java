@@ -47,15 +47,15 @@ public class ContactControllerTest {
     public void createContact() throws Exception {
 
         var contactDomain = ContactDomain.builder()
-                .id(Optional.of("123456"))
-                .name(Optional.of("John Doe"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("doe@email.com")).build();
+                .id("123456")
+                .name("John Doe")
+                .phone("999999999")
+                .email("doe@email.com").build();
 
         var contactResponse = ContactResponse.builder()
                 .id("123456")
                 .name("John Doe")
-                .phone("9999-9999")
+                .phone("999999999")
                 .email("doe@email.com").build();
 
         when(createContactUseCase.execute(any())).thenReturn(contactDomain);
@@ -63,14 +63,14 @@ public class ContactControllerTest {
 
         this.mockMvc.perform(post("/contacts")
                 .content("{\"name\":\"John Doe\", " +
-                        "\"phone\": \"9999-9999\", " +
+                        "\"phone\": \"999999999\", " +
                         "\"email\": \"doe@email.com\"}")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id", is("123456")))
                 .andExpect(jsonPath("$.name", is("John Doe")))
-                .andExpect(jsonPath("$.phone", is("9999-9999")))
+                .andExpect(jsonPath("$.phone", is("999999999")))
                 .andExpect(jsonPath("$.email", is("doe@email.com")));
     }
 
@@ -78,15 +78,15 @@ public class ContactControllerTest {
     public void listContacts() throws Exception {
 
         var contactDomain = ContactDomain.builder()
-                .id(Optional.of("123456"))
-                .name(Optional.of("John Doe"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("doe@email.com")).build();
+                .id("123456")
+                .name("John Doe")
+                .phone("999999999")
+                .email("doe@email.com").build();
 
         var contactResponse = ContactResponse.builder()
                 .id("123456")
                 .name("John Doe")
-                .phone("9999-9999")
+                .phone("999999999")
                 .email("doe@email.com").build();
 
         when(listContactsUseCase.execute()).thenReturn(Arrays.asList(contactDomain));

@@ -26,18 +26,18 @@ public class CreateContactUserCaseServiceTest {
     public void createContact() {
 
         var expected = ContactDomain.builder()
-                .id(Optional.of("123456"))
-                .name(Optional.of("John Dow"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("doe@email.com"))
+                .id("123456")
+                .name("John Dow")
+                .phone("999999999")
+                .email("doe@email.com")
                 .build();
 
         Mockito.when(contactPersistence.save(Mockito.any())).thenReturn(expected);
 
         var command = CreateContactCommand.builder()
-                .name(Optional.of("John Dow"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("DOE@email.com"))
+                .name("John Dow")
+                .phone("999999999")
+                .email("DOE@email.com")
                 .build();
 
         var actual = service.execute(command);

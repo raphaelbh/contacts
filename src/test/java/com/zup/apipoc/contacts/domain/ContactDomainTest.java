@@ -1,7 +1,6 @@
 package com.zup.apipoc.contacts.domain;
 
-import com.zup.apipoc.commons.exceptions.RequiredFieldException;
-import com.zup.apipoc.contacts.domain.exceptions.InvalidNameException;
+import com.zup.apipoc.commons.exceptions.InvalidFieldException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,22 +14,24 @@ public class ContactDomainTest {
     public void validateWithoutErrors() {
 
         var contact = ContactDomain.builder()
-                .name(Optional.of("John Doe"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("doe@email.com")).build();
+                .name("John Doe")
+                .phone("999999999")
+                .email("doe@email.com").build();
 
         contact.validate();
     }
 
+
+
     @Test
     public void validateNameRequired() {
 
-        assertThrows(RequiredFieldException.class, () -> {
+        assertThrows(InvalidFieldException.class, () -> {
 
             var contact = ContactDomain.builder()
-                    .name(Optional.empty())
-                    .phone(Optional.of("9999-9999"))
-                    .email(Optional.of("doe@email.com")).build();
+                    .name(null)
+                    .phone("999999999")
+                    .email("doe@email.com").build();
 
             contact.validate();
 
@@ -41,12 +42,12 @@ public class ContactDomainTest {
     @Test
     public void validatePhoneRequired() {
 
-        assertThrows(RequiredFieldException.class, () -> {
+        assertThrows(InvalidFieldException.class, () -> {
 
             var contact = ContactDomain.builder()
-                    .name(Optional.of("John Doe"))
-                    .phone(Optional.empty())
-                    .email(Optional.of("doe@email.com")).build();
+                    .name("John Doe")
+                    .phone(null)
+                    .email("doe@email.com").build();
 
             contact.validate();
 
@@ -57,12 +58,12 @@ public class ContactDomainTest {
     @Test
     public void validateEmailRequired() {
 
-        assertThrows(RequiredFieldException.class, () -> {
+        assertThrows(InvalidFieldException.class, () -> {
 
             var contact = ContactDomain.builder()
-                    .name(Optional.of("John Doe"))
-                    .phone(Optional.of("9999-9999"))
-                    .email(Optional.empty()).build();
+                    .name("John Doe")
+                    .phone("999999999")
+                    .email(null).build();
 
             contact.validate();
 
@@ -73,17 +74,17 @@ public class ContactDomainTest {
     @Test
     public void validateLongerName() {
 
-        assertThrows(InvalidNameException.class, () -> {
+        assertThrows(InvalidFieldException.class, () -> {
 
             var contact = ContactDomain.builder()
-                    .name(Optional.of("John Doe with more than 256 characters ...................................." +
+                    .name("John Doe with more than 256 characters ...................................." +
                             "....................................................................................." +
                             "....................................................................................." +
                             "....................................................................................." +
                             "....................................................................................." +
-                            "....................................................................................."))
-                    .phone(Optional.of("9999-9999"))
-                    .email(Optional.of("doe@email.com")).build();
+                            ".....................................................................................")
+                    .phone("999999999")
+                    .email("doe@email.com").build();
 
             contact.validate();
 
@@ -95,11 +96,11 @@ public class ContactDomainTest {
     public void sanitizeEmail() {
 
         var contact = ContactDomain.builder()
-                .email(Optional.of("DOE@email.com")).build();
+                .email("DOE@email.com").build();
 
         contact.sanitize();
 
-        assertEquals("doe@email.com", contact.getEmail().get());
+        assertEquals("doe@email.com", contact.getEmail());
     }
 
 }

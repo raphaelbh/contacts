@@ -21,16 +21,16 @@ public class ContactResponseMapperTest {
     public void convertDomainEntityToResponse() {
 
         var domain = ContactDomain.builder()
-                .id(Optional.of("123456"))
-                .name(Optional.of("John Doe"))
-                .phone(Optional.of("9999-9999"))
-                .email(Optional.of("doe@email.com"))
+                .id("123456")
+                .name("John Doe")
+                .phone("999999999")
+                .email("doe@email.com")
                 .build();
 
         var expected = ContactResponse.builder()
                 .id("123456")
                 .name("John Doe")
-                .phone("9999-9999")
+                .phone("999999999")
                 .email("doe@email.com")
                 .build();
 
@@ -43,16 +43,16 @@ public class ContactResponseMapperTest {
 
         var domains = Arrays.asList(
                 ContactDomain.builder()
-                        .id(Optional.of("123"))
-                        .name(Optional.of("John Doe"))
-                        .phone(Optional.of("9999-9999"))
-                        .email(Optional.of("doe@email.com"))
+                        .id("123")
+                        .name("John Doe")
+                        .phone("999999999")
+                        .email("doe@email.com")
                         .build(),
                 ContactDomain.builder()
-                        .id(Optional.of("456"))
-                        .name(Optional.of("Adam Smith"))
-                        .phone(Optional.of("8888-8888"))
-                        .email(Optional.of("smith@email.com"))
+                        .id("456")
+                        .name("Adam Smith")
+                        .phone("999999999")
+                        .email("smith@email.com")
                         .build()
         );
 
@@ -60,13 +60,13 @@ public class ContactResponseMapperTest {
                 ContactResponse.builder()
                         .id("123")
                         .name("John Doe")
-                        .phone("9999-9999")
+                        .phone("999999999")
                         .email("doe@email.com")
                         .build(),
                 ContactResponse.builder()
                         .id("456")
                         .name("Adam Smith")
-                        .phone("8888-8888")
+                        .phone("999999999")
                         .email("smith@email.com")
                         .build()
         );
