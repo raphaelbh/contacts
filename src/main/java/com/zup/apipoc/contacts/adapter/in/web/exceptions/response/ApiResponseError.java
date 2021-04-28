@@ -2,7 +2,6 @@ package com.zup.apipoc.contacts.adapter.in.web.exceptions.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +22,7 @@ public class ApiResponseError {
 
     @Getter @Setter private String message;
 
-    @Getter @Setter private List<ApiResponseFieldError> apiResponseFieldErrors;
+    @Getter @Setter private List<String> apiResponseFieldErrors;
 
 
     public ApiResponseError(HttpStatus status, String message) {
@@ -31,7 +30,7 @@ public class ApiResponseError {
         this.message = message;
     }
 
-    public ApiResponseError(HttpStatus status, String message, List<ApiResponseFieldError> apiResponseFieldErrors) {
+    public ApiResponseError(HttpStatus status, String message, List<String> apiResponseFieldErrors) {
         this.status = status;
         this.message = message;
         this.apiResponseFieldErrors = apiResponseFieldErrors;

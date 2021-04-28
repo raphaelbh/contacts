@@ -44,18 +44,12 @@ public class ContactDomain {
 
     }
 
-    @Valid
-    public static ContactDomain create ( @NotBlank @Size(max = 256) String name ) {
-        return null;
-    };
-
-
     public void validate() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         var errors = factory.getValidator().validate(this);
         if(!errors.isEmpty()) {
-            final StringBuilder builder = new StringBuilder("Field(s) Error(s): ");
-            errors.stream().forEach((e) -> builder.append(e.getPropertyPath() +  ": " +  e.getMessage() + " \n "));
+            final StringBuilder builder = new StringBuilder("Field(s) Error(s)");
+            errors.stream().forEach((e) -> builder.append(" \n" + e.getPropertyPath() +  ": " +  e.getMessage()));
             throw new InvalidFieldException(builder.toString());
         }
     };

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @ControllerAdvice
@@ -26,7 +28,17 @@ public class RestResponseEntityExceptionHandler  extends ResponseEntityException
 
     @ExceptionHandler(InvalidFieldException.class)
     public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidFieldException ex) {
-        return buildResponseEntity(new ApiResponseError(HttpStatus.BAD_REQUEST, ex.getMessage()));
+        ApiResponseError response = new ApiResponseError();
+        List<String> apiResponseFieldError = new ArrayList<>();
+        String messages[] = ex.getMessage().split("\n");
+        response.setStatus(HttpStatus.BAD_REQUEST);
+        response.setMessage(messages[0]);
+        for(String message: messages) {
+            if(Arrays.asList(messages).indexOf(message) != 0)
+                apiResponseFieldError.add(message);
+        }
+        response.setApiResponseFieldErrors(apiResponseFieldError);
+        return buildResponseEntity(response);
     }
 
 
