@@ -19,12 +19,12 @@ public class ContactEntityMapper {
     public ContactEntity to(ContactDomain contact) {
 
         var entity =  ContactEntity.builder()
-                .name(contact.getName().get())
-                .phone(contact.getPhone().get())
-                .email(contact.getEmail().get()).build();
+                .name(contact.getName())
+                .phone(contact.getPhone())
+                .email(contact.getEmail()).build();
 
-        if (contact.getId().isPresent()) {
-            entity.setId(contact.getId().get());
+        if (contact.getId() != null) {
+            entity.setId(contact.getId());
         }
 
         return entity;
@@ -32,10 +32,10 @@ public class ContactEntityMapper {
 
     public ContactDomain to(ContactEntity entity) {
         return ContactDomain.builder()
-                .id(Optional.of(entity.getId()))
-                .name(Optional.of(entity.getName()))
-                .phone(Optional.of(entity.getPhone()))
-                .email(Optional.of(entity.getEmail())).build();
+                .id(entity.getId())
+                .name(entity.getName())
+                .phone(entity.getPhone())
+                .email(entity.getEmail()).build();
     }
 
     public List<ContactDomain> to(List<ContactEntity> entities) {

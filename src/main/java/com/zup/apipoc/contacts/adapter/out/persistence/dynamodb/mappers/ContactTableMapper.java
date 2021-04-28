@@ -17,13 +17,11 @@ import java.util.stream.Collectors;
 @Component
 public class ContactTableMapper {
 
-    ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public ContactTableMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
-        this.modelMapper.addMappings(mapPropetyToTable);
-        this.modelMapper.addMappings(mapPropertyToDomain);
     }
 
 
@@ -41,46 +39,6 @@ public class ContactTableMapper {
                 .map(this::mapToDomain)
                 .collect(Collectors.toList());
     }
-
-    PropertyMap<ContactDomain, ContactTable> mapPropetyToTable = new PropertyMap<ContactDomain, ContactTable>() {
-        protected void configure() {
-            using(stringContactConvert).map(source.getId()).setId(null);
-            using(stringContactConvert).map(source.getName()).setName(null);
-            using(stringContactConvert).map(source.getPhone()).setPhone(null);
-            using(stringContactConvert).map(source.getEmail()).setEmail(null);
-        }
-    };
-
-    PropertyMap<ContactTable, ContactDomain> mapPropertyToDomain = new PropertyMap<ContactTable, ContactDomain>() {
-        @Override
-        protected void configure() {
-            using(optionalContactConvert).map(source.getId()).setId(Optional.empty());
-            using(optionalContactConvert).map(source.getName()).setName(Optional.empty());
-            using(optionalContactConvert).map(source.getPhone()).setPhone(Optional.empty());
-            using(optionalContactConvert).map(source.getEmail()).setEmail(Optional.empty());
-        }
-    };
-
-    Converter<Optional, Object> stringContactConvert = new Converter<Optional, Object>() {
-        @Override
-        public Object convert(MappingContext<Optional, Object> context) {
-            if(context.getSource().isPresent()) {
-                return context.getSource().get();
-            }
-            return null;
-        }
-    };
-
-    Converter<String, Optional> optionalContactConvert = new Converter<String, Optional>() {
-        @Override
-        public Optional convert(MappingContext<String, Optional> context) {
-            if(context.getSource() != null) {
-                return Optional.of(context.getSource());
-            }
-            return null;
-        }
-    };
-
 
 }
 

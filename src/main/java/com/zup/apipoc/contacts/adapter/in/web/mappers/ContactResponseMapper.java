@@ -17,12 +17,12 @@ public class ContactResponseMapper {
 
     public ContactResponse to(ContactDomain contact) {
         var contactResponse = ContactResponse.builder()
-                .name(contact.getName().get())
-                .phone(contact.getPhone().get())
-                .email(contact.getEmail().get()).build();
+                .name(contact.getName())
+                .phone(contact.getPhone())
+                .email(contact.getEmail()).build();
 
-        if (contact.getId().isPresent()) {
-            contactResponse.setId(contact.getId().get().toString());
+        if (contact.getId() != null) {
+            contactResponse.setId(contact.getId().toString());
         }
 
         return contactResponse;

@@ -26,8 +26,8 @@ public class ListContactUserCaseServiceTest {
     public void listContacts() {
 
         var expected = Arrays.asList(
-                ContactDomain.builder().id(Optional.of("123")).build(),
-                ContactDomain.builder().id(Optional.of("456")).build()
+                ContactDomain.builder().id("123").build(),
+                ContactDomain.builder().id("456").build()
         );
 
         Mockito.when(contactPersistence.getAll()).thenReturn(expected);
