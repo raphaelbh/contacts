@@ -2,6 +2,7 @@ package com.zup.apipoc.contacts.domain;
 
 import com.zup.apipoc.commons.exceptions.InvalidDomainException;
 import lombok.*;
+import org.apache.commons.collections4.CollectionUtils;
 
 import javax.validation.Validation;
 import javax.validation.constraints.Email;
@@ -48,10 +49,10 @@ public class ContactDomain {
         var factory = Validation.buildDefaultValidatorFactory();
         var errors = factory.getValidator().validate(this);
         List<String> fieldErrors = new ArrayList<>();
-        if(!errors.isEmpty()) {
-            final var builder = new StringBuilder("Field(s) Error(s)");
-            errors.forEach(e -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
-            throw new InvalidDomainException(builder.toString(), fieldErrors);
+        if(CollectionUtils.isNotEmpty(errors)) {
+            final String message = "Invalid field error";
+            errors.stream().forEach((e) -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
+            throw new InvalidDomainException(message, fieldErrors);
         }
     }
 
