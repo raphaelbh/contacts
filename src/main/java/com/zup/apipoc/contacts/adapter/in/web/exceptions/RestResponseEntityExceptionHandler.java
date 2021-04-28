@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 @ControllerAdvice
 public class RestResponseEntityExceptionHandler  extends ResponseEntityExceptionHandler {
 
@@ -22,7 +18,7 @@ public class RestResponseEntityExceptionHandler  extends ResponseEntityException
 
     @ExceptionHandler(InvalidDomainException.class)
     public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidDomainException ex) {
-        ApiResponseError response = new ApiResponseError();
+        var response = new ApiResponseError();
         response.setStatus(HttpStatus.BAD_REQUEST);
         response.setMessage(ex.getMessage());
         response.setFieldErrors(ex.getFieldErrors());

@@ -10,7 +10,7 @@ public class ApiPocConfiguration {
 
     @Bean
     public ModelMapper modelMapper () {
-        ModelMapper modelMapper = new ModelMapper();
+        var modelMapper = new ModelMapper();
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT);
         return modelMapper;

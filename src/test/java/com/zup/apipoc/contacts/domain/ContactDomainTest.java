@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ContactDomainTest {
+class ContactDomainTest {
 
     @Test
-    public void validateWithoutErrors() {
+    void validateWithoutErrors() {
 
         var contact = ContactDomain.builder()
                 .name("John Doe")
@@ -22,76 +22,60 @@ public class ContactDomainTest {
 
 
     @Test
-    public void validateNameRequired() {
+    void validateNameRequired() {
 
-        assertThrows(InvalidDomainException.class, () -> {
+        var contact = ContactDomain.builder()
+                .name(null)
+                .phone("999999999")
+                .email("doe@email.com").build();
 
-            var contact = ContactDomain.builder()
-                    .name(null)
-                    .phone("999999999")
-                    .email("doe@email.com").build();
-
-            contact.validate();
-
-        });
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
     @Test
-    public void validatePhoneRequired() {
+    void validatePhoneRequired() {
 
-        assertThrows(InvalidDomainException.class, () -> {
+        var contact = ContactDomain.builder()
+                .name("John Doe")
+                .phone(null)
+                .email("doe@email.com").build();
 
-            var contact = ContactDomain.builder()
-                    .name("John Doe")
-                    .phone(null)
-                    .email("doe@email.com").build();
-
-            contact.validate();
-
-        });
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
     @Test
-    public void validateEmailRequired() {
+    void validateEmailRequired() {
 
-        assertThrows(InvalidDomainException.class, () -> {
+        var contact = ContactDomain.builder()
+                .name("John Doe")
+                .phone("999999999")
+                .email(null).build();
 
-            var contact = ContactDomain.builder()
-                    .name("John Doe")
-                    .phone("999999999")
-                    .email(null).build();
-
-            contact.validate();
-
-        });
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
     @Test
-    public void validateLongerName() {
+    void validateLongerName() {
 
-        assertThrows(InvalidDomainException.class, () -> {
+        var contact = ContactDomain.builder()
+                .name("John Doe with more than 256 characters ...................................." +
+                        "....................................................................................." +
+                        "....................................................................................." +
+                        "....................................................................................." +
+                        "....................................................................................." +
+                        ".....................................................................................")
+                .phone("999999999")
+                .email("doe@email.com").build();
 
-            var contact = ContactDomain.builder()
-                    .name("John Doe with more than 256 characters ...................................." +
-                            "....................................................................................." +
-                            "....................................................................................." +
-                            "....................................................................................." +
-                            "....................................................................................." +
-                            ".....................................................................................")
-                    .phone("999999999")
-                    .email("doe@email.com").build();
-
-            contact.validate();
-
-        });
+        assertThrows(InvalidDomainException.class, contact::validate);
 
     }
 
     @Test
-    public void sanitizeEmail() {
+    void sanitizeEmail() {
 
         var contact = ContactDomain.builder()
                 .email("DOE@email.com").build();
@@ -102,41 +86,38 @@ public class ContactDomainTest {
     }
 
     @Test
-    public void validateEmail() {
-        assertThrows(InvalidDomainException.class, () -> {
-            var contact = ContactDomain.builder()
-                    .name("Roberto Danilo")
-                    .phone("980469820")
-                    .email("roberto.email.com")
-                    .build();
+    void validateEmail() {
 
-            contact.validate();
-        });
+        var contact = ContactDomain.builder()
+                .name("Roberto Danilo")
+                .phone("980469820")
+                .email("roberto.email.com")
+                .build();
+
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
     @Test
-    public void validatePhoneOnlyNumber() {
-        assertThrows(InvalidDomainException.class, () -> {
-            var contact = ContactDomain.builder()
-                    .name("Roberto Danilo")
-                    .phone("99999-9999")
-                    .email(null).build();
+    void validatePhoneOnlyNumber() {
 
-            contact.validate();
-        });
+        var contact = ContactDomain.builder()
+                .name("Roberto Danilo")
+                .phone("99999-9999")
+                .email(null).build();
+
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
     @Test
-    public void validatePhoneSizeNumber() {
-        assertThrows(InvalidDomainException.class, () -> {
-            var contact = ContactDomain.builder()
-                    .name("Roberto Danilo")
-                    .phone("9999999999")
-                    .email("roberto@gmail.com")
-                    .build();
+    void validatePhoneSizeNumber() {
 
-            contact.validate();
-        });
+        var contact = ContactDomain.builder()
+                .name("Roberto Danilo")
+                .phone("9999999999")
+                .email("roberto@gmail.com")
+                .build();
+
+        assertThrows(InvalidDomainException.class, contact::validate);
     }
 
 }

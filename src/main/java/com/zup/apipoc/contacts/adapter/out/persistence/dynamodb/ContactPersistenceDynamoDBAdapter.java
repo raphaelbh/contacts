@@ -7,7 +7,6 @@ import com.zup.apipoc.contacts.adapter.out.persistence.dynamodb.tables.ContactTa
 import com.zup.apipoc.contacts.application.port.out.ContactPersistence;
 import com.zup.apipoc.contacts.domain.ContactDomain;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 
 

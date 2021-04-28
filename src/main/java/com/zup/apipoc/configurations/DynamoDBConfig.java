@@ -28,11 +28,9 @@ public class DynamoDBConfig {
 
     @Bean
     public AmazonDynamoDB amazonDynamoDB(AWSCredentialsProvider awsCredentialsProvider) {
-        AmazonDynamoDB amazonDynamoDB
-                = AmazonDynamoDBClientBuilder.standard()
+        return AmazonDynamoDBClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(amazonDynamoDBEndpoint, amazonAWSRegion))
                 .withCredentials(awsCredentialsProvider).build();
-        return amazonDynamoDB;
     }
     @Bean
     public AWSCredentialsProvider awsCredentialsProvider() {

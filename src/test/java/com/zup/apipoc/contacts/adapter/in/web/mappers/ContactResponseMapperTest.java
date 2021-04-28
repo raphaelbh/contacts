@@ -9,16 +9,15 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
-public class ContactResponseMapperTest {
+class ContactResponseMapperTest {
 
     @InjectMocks
     private ContactResponseMapper mapper;
 
     @Test
-    public void convertDomainEntityToResponse() {
+    void convertDomainEntityToResponse() {
 
         var domain = ContactDomain.builder()
                 .id("123456")
@@ -39,7 +38,7 @@ public class ContactResponseMapperTest {
     }
 
     @Test
-    public void convertDomainListToResponse() {
+    void convertDomainListToResponse() {
 
         var domains = Arrays.asList(
                 ContactDomain.builder()

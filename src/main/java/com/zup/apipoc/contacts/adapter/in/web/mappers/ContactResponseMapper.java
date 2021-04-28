@@ -22,7 +22,7 @@ public class ContactResponseMapper {
                 .email(contact.getEmail()).build();
 
         if (contact.getId() != null) {
-            contactResponse.setId(contact.getId().toString());
+            contactResponse.setId(contact.getId());
         }
 
         return contactResponse;

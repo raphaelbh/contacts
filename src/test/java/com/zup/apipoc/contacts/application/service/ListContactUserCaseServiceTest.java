@@ -11,10 +11,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
-public class ListContactUserCaseServiceTest {
+class ListContactUserCaseServiceTest {
 
     @Mock
     private ContactPersistence contactPersistence;
@@ -23,7 +22,7 @@ public class ListContactUserCaseServiceTest {
     private ListContactUseCaseService service;
 
     @Test
-    public void listContacts() {
+    void listContacts() {
 
         var expected = Arrays.asList(
                 ContactDomain.builder().id("123").build(),

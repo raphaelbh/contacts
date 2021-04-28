@@ -26,10 +26,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @WebMvcTest(controllers = ContactController.class)
-public class ContactControllerTest {
+class ContactControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -44,7 +43,7 @@ public class ContactControllerTest {
     private ContactResponseMapper contactResponseMapper;
 
     @Test
-    public void createContact() throws Exception {
+    void createContact() throws Exception {
 
         var contactDomain = ContactDomain.builder()
                 .id("123456")
@@ -75,7 +74,7 @@ public class ContactControllerTest {
     }
 
     @Test
-    public void listContacts() throws Exception {
+    void listContacts() throws Exception {
 
         var contactDomain = ContactDomain.builder()
                 .id("123456")

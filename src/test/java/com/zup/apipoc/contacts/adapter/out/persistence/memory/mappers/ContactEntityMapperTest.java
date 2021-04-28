@@ -8,16 +8,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 @ExtendWith(MockitoExtension.class)
-public class ContactEntityMapperTest {
+class ContactEntityMapperTest {
 
     @InjectMocks
     private ContactEntityMapper mapper;
 
     @Test
-    public void convertEntityToDomain() {
+    void convertEntityToDomain() {
 
         var entity = ContactEntity.builder()
                 .id("123456")
@@ -38,7 +36,7 @@ public class ContactEntityMapperTest {
     }
 
     @Test
-    public void convertDomainToEntity() {
+    void convertDomainToEntity() {
 
         var domain = ContactDomain.builder()
                 .id("123456")

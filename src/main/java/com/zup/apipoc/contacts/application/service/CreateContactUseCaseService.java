@@ -23,7 +23,6 @@ public class CreateContactUseCaseService implements CreateContactUseCase {
                 .email(command.getEmail()).build();
 
         contact.validate();
-
         contact.sanitize();
 
         return contactPersistence.save(contact);

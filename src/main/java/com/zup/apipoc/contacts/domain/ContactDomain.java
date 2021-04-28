@@ -5,7 +5,6 @@ import lombok.*;
 import org.apache.commons.collections4.CollectionUtils;
 
 import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -25,7 +24,7 @@ public class ContactDomain {
 
      @Getter @Setter
      @NotBlank
-     @Size(min = 10, max = 256)
+     @Size(min = 4, max = 256)
      private String name;
 
      @Getter @Setter
@@ -47,15 +46,15 @@ public class ContactDomain {
     }
 
     public void validate() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        var factory = Validation.buildDefaultValidatorFactory();
         var errors = factory.getValidator().validate(this);
         List<String> fieldErrors = new ArrayList<>();
         if(CollectionUtils.isNotEmpty(errors)) {
-            final String message = "Invalid field error";
-            errors.stream().forEach((e) -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
+            final var message = "Invalid field error";
+            errors.forEach(e -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
             throw new InvalidDomainException(message, fieldErrors);
         }
-    };
+    }
 
 
 }
