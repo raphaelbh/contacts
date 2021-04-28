@@ -22,9 +22,9 @@ public class RestResponseEntityExceptionHandler  extends ResponseEntityException
 
     @ExceptionHandler(InvalidFieldException.class)
     public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidFieldException ex) {
-        ApiResponseError response = new ApiResponseError();
+        var response = new ApiResponseError();
         List<String> apiResponseFieldError = new ArrayList<>();
-        String messages[] = ex.getMessage().split("\n");
+        String[] messages = ex.getMessage().split("\n");
         response.setStatus(HttpStatus.BAD_REQUEST);
         response.setMessage(messages[0]);
         for(String message: messages) {

@@ -30,11 +30,5 @@ public class ApiResponseError {
         this.message = message;
     }
 
-    public ApiResponseError(HttpStatus status, String message, List<String> apiResponseFieldErrors) {
-        this.status = status;
-        this.message = message;
-        this.apiResponseFieldErrors = apiResponseFieldErrors;
-    }
-
 
 }

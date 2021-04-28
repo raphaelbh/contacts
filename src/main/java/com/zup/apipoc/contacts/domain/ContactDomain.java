@@ -3,9 +3,7 @@ package com.zup.apipoc.contacts.domain;
 import com.zup.apipoc.commons.exceptions.InvalidFieldException;
 import lombok.*;
 
-import javax.validation.Valid;
 import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -23,7 +21,7 @@ public class ContactDomain {
 
      @Getter @Setter
      @NotBlank
-     @Size(min = 10, max = 256)
+     @Size(min = 4, max = 256)
      private String name;
 
      @Getter @Setter
@@ -45,14 +43,14 @@ public class ContactDomain {
     }
 
     public void validate() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        var factory = Validation.buildDefaultValidatorFactory();
         var errors = factory.getValidator().validate(this);
         if(!errors.isEmpty()) {
-            final StringBuilder builder = new StringBuilder("Field(s) Error(s)");
-            errors.stream().forEach((e) -> builder.append(" \n" + e.getPropertyPath() +  ": " +  e.getMessage()));
+            final var builder = new StringBuilder("Field(s) Error(s)");
+            errors.forEach(e -> builder.append(" \n").append(e.getPropertyPath()).append(": ").append(e.getMessage()));
             throw new InvalidFieldException(builder.toString());
         }
-    };
+    }
 
 
 }

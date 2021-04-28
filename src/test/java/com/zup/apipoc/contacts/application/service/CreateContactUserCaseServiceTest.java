@@ -11,10 +11,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Optional;
-
 @ExtendWith(MockitoExtension.class)
-public class CreateContactUserCaseServiceTest {
+class CreateContactUserCaseServiceTest {
 
     @Mock
     private ContactPersistence contactPersistence;
@@ -23,7 +21,7 @@ public class CreateContactUserCaseServiceTest {
     private CreateContactUseCaseService service;
 
     @Test
-    public void createContact() {
+    void createContact() {
 
         var expected = ContactDomain.builder()
                 .id("123456")
