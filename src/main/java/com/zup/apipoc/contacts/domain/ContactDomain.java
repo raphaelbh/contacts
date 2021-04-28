@@ -50,8 +50,8 @@ public class ContactDomain {
         var errors = factory.getValidator().validate(this);
         List<String> fieldErrors = new ArrayList<>();
         if(CollectionUtils.isNotEmpty(errors)) {
-            final String message = "Invalid field error";
-            errors.stream().forEach((e) -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
+            final var message = "Invalid field error";
+            errors.forEach(e -> fieldErrors.add(e.getPropertyPath() +  ": " +  e.getMessage()));
             throw new InvalidDomainException(message, fieldErrors);
         }
     }
