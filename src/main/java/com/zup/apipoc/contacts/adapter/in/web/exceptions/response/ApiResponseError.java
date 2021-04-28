@@ -22,7 +22,7 @@ public class ApiResponseError {
 
     @Getter @Setter private String message;
 
-    @Getter @Setter private List<String> apiResponseFieldErrors;
+    @Getter @Setter private List<String> fieldErrors;
 
 
     public ApiResponseError(HttpStatus status, String message) {
@@ -30,10 +30,10 @@ public class ApiResponseError {
         this.message = message;
     }
 
-    public ApiResponseError(HttpStatus status, String message, List<String> apiResponseFieldErrors) {
+    public ApiResponseError(HttpStatus status, String message, List<String> fieldErrors) {
         this.status = status;
         this.message = message;
-        this.apiResponseFieldErrors = apiResponseFieldErrors;
+        this.fieldErrors = fieldErrors;
     }
 
 

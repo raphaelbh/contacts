@@ -1,6 +1,6 @@
 package com.zup.apipoc.contacts.adapter.in.web.exceptions;
 
-import com.zup.apipoc.commons.exceptions.InvalidFieldException;
+import com.zup.apipoc.commons.exceptions.InvalidDomainException;
 import com.zup.apipoc.contacts.adapter.in.web.exceptions.response.ApiResponseError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,18 +20,12 @@ public class RestResponseEntityExceptionHandler  extends ResponseEntityException
         return buildResponseEntity(new ApiResponseError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()));
     }
 
-    @ExceptionHandler(InvalidFieldException.class)
-    public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidFieldException ex) {
+    @ExceptionHandler(InvalidDomainException.class)
+    public ResponseEntity<ApiResponseError> handleMethodConstraintViolationException(InvalidDomainException ex) {
         ApiResponseError response = new ApiResponseError();
-        List<String> apiResponseFieldError = new ArrayList<>();
-        String messages[] = ex.getMessage().split("\n");
         response.setStatus(HttpStatus.BAD_REQUEST);
-        response.setMessage(messages[0]);
-        for(String message: messages) {
-            if(Arrays.asList(messages).indexOf(message) != 0)
-                apiResponseFieldError.add(message);
-        }
-        response.setApiResponseFieldErrors(apiResponseFieldError);
+        response.setMessage(response.getMessage());
+        response.setFieldErrors(ex.getFieldErrors());
         return buildResponseEntity(response);
     }
 

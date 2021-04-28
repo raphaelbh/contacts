@@ -1,12 +1,10 @@
 package com.zup.apipoc.contacts.domain;
 
-import com.zup.apipoc.commons.exceptions.InvalidFieldException;
+import com.zup.apipoc.commons.exceptions.InvalidDomainException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import java.util.Optional;
 
 public class ContactDomainTest {
 
@@ -26,7 +24,7 @@ public class ContactDomainTest {
     @Test
     public void validateNameRequired() {
 
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
 
             var contact = ContactDomain.builder()
                     .name(null)
@@ -42,7 +40,7 @@ public class ContactDomainTest {
     @Test
     public void validatePhoneRequired() {
 
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
 
             var contact = ContactDomain.builder()
                     .name("John Doe")
@@ -58,7 +56,7 @@ public class ContactDomainTest {
     @Test
     public void validateEmailRequired() {
 
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
 
             var contact = ContactDomain.builder()
                     .name("John Doe")
@@ -74,7 +72,7 @@ public class ContactDomainTest {
     @Test
     public void validateLongerName() {
 
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
 
             var contact = ContactDomain.builder()
                     .name("John Doe with more than 256 characters ...................................." +
@@ -105,7 +103,7 @@ public class ContactDomainTest {
 
     @Test
     public void validateEmail() {
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
             var contact = ContactDomain.builder()
                     .name("Roberto Danilo")
                     .phone("980469820")
@@ -118,7 +116,7 @@ public class ContactDomainTest {
 
     @Test
     public void validatePhoneOnlyNumber() {
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
             var contact = ContactDomain.builder()
                     .name("Roberto Danilo")
                     .phone("99999-9999")
@@ -130,7 +128,7 @@ public class ContactDomainTest {
 
     @Test
     public void validatePhoneSizeNumber() {
-        assertThrows(InvalidFieldException.class, () -> {
+        assertThrows(InvalidDomainException.class, () -> {
             var contact = ContactDomain.builder()
                     .name("Roberto Danilo")
                     .phone("9999999999")
