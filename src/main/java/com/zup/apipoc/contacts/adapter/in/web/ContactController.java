@@ -31,7 +31,7 @@ public class ContactController {
 
 
 
-    @Operation(description = "Endpoint to create new contact", summary = "successfully created contact")
+    @Operation(description = "Endpoint to create new contact", summary = "create contact")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "successfully created contact",
             content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ContactResponse.class))}),
