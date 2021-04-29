@@ -29,7 +29,7 @@ public class ContactDomain {
 
      @Getter @Setter
      @NotBlank
-     @Size(min=9, max = 9)
+     @Size(min=13, max = 13)
      @Pattern(regexp="^(0|[1-9][0-9]*)$",message = "phone should have only numbers")
      private String phone;
 
