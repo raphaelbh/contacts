@@ -13,7 +13,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name("John Doe")
-                .phone("999999999")
+                .phone("5591938205930")
                 .email("doe@email.com").build();
 
         contact.validate();
@@ -26,7 +26,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name(null)
-                .phone("999999999")
+                .phone("5591938205930")
                 .email("doe@email.com").build();
 
         assertThrows(InvalidDomainException.class, contact::validate);
@@ -50,7 +50,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name("John Doe")
-                .phone("999999999")
+                .phone("5591938205930")
                 .email(null).build();
 
         assertThrows(InvalidDomainException.class, contact::validate);
@@ -67,7 +67,7 @@ class ContactDomainTest {
                         "....................................................................................." +
                         "....................................................................................." +
                         ".....................................................................................")
-                .phone("999999999")
+                .phone("5591938205930")
                 .email("doe@email.com").build();
 
         assertThrows(InvalidDomainException.class, contact::validate);
@@ -90,7 +90,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name("Roberto Danilo")
-                .phone("980469820")
+                .phone("5591938205930")
                 .email("roberto.email.com")
                 .build();
 
@@ -102,7 +102,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name("Roberto Danilo")
-                .phone("99999-9999")
+                .phone("55938-205930")
                 .email(null).build();
 
         assertThrows(InvalidDomainException.class, contact::validate);
@@ -113,7 +113,7 @@ class ContactDomainTest {
 
         var contact = ContactDomain.builder()
                 .name("Roberto Danilo")
-                .phone("9999999999")
+                .phone("5591938205930999")
                 .email("roberto@gmail.com")
                 .build();
 
