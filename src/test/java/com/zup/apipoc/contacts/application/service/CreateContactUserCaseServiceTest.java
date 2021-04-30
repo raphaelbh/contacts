@@ -26,7 +26,7 @@ class CreateContactUserCaseServiceTest {
         var expected = ContactDomain.builder()
                 .id("123456")
                 .name("John Dow")
-                .phone("999999999")
+                .phone("5591938205930")
                 .email("doe@email.com")
                 .build();
 
@@ -34,7 +34,7 @@ class CreateContactUserCaseServiceTest {
 
         var command = CreateContactCommand.builder()
                 .name("John Dow")
-                .phone("999999999")
+                .phone("5591938205930")
                 .email("DOE@email.com")
                 .build();
 
