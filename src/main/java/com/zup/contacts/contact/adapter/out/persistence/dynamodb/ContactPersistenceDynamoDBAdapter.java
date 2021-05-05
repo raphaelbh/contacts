@@ -1,6 +1,6 @@
 package com.zup.contacts.contact.adapter.out.persistence.dynamodb;
 
-import com.zup.contacts.configurations.annotations.PersistenceAdapter;
+import com.zup.contacts.contact.adapter.out.persistence.configurations.PersistenceAdapter;
 import com.zup.contacts.contact.adapter.out.persistence.dynamodb.mappers.ContactTableMapper;
 import com.zup.contacts.contact.adapter.out.persistence.dynamodb.repositories.ContactRepository;
 import com.zup.contacts.contact.adapter.out.persistence.dynamodb.tables.ContactTable;
@@ -12,14 +12,12 @@ import org.springframework.context.annotation.Primary;
 
 import java.util.List;
 
-
-@PersistenceAdapter
 @Primary
+@PersistenceAdapter
 @RequiredArgsConstructor
 public class ContactPersistenceDynamoDBAdapter implements ContactPersistence {
 
     private final ContactTableMapper contactTableMapper;
-
     private final ContactRepository contactRepository;
 
     @Override

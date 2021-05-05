@@ -1,4 +1,4 @@
-package com.zup.contacts.configurations;
+package com.zup.contacts.contact.adapter.out.persistence.dynamodb.configurations;
 
 import com.amazonaws.auth.AWSCredentialsProvider;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 
 @Configuration
 @EnableDynamoDBRepositories(basePackages = "com.zup.contacts.contact.adapter.out.persistence.dynamodb.repositories")
-public class DynamoDbConfig {
+public class DynamoDbConfiguration {
 
     @Value("${amazon.dynamodb.endpoint}")
     private String amazonDynamoDBEndpoint;

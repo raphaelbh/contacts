@@ -1,4 +1,4 @@
-package com.zup.contacts.configurations;
+package com.zup.contacts.contact.adapter.in.web.configurations;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

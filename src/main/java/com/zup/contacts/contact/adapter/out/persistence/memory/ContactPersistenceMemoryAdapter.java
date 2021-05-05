@@ -1,6 +1,6 @@
 package com.zup.contacts.contact.adapter.out.persistence.memory;
 
-import com.zup.contacts.configurations.annotations.PersistenceAdapter;
+import com.zup.contacts.contact.adapter.out.persistence.configurations.PersistenceAdapter;
 import com.zup.contacts.contact.adapter.out.persistence.memory.entities.ContactEntity;
 import com.zup.contacts.contact.adapter.out.persistence.memory.mappers.ContactEntityMapper;
 import com.zup.contacts.contact.application.port.out.ContactPersistence;

@@ -1,6 +1,6 @@
 package com.zup.contacts.contact.application.service;
 
-import com.zup.contacts.configurations.annotations.UseCase;
+import com.zup.contacts.contact.application.configurations.UseCase;
 import com.zup.contacts.contact.application.port.in.ListContactsUseCase;
 import com.zup.contacts.contact.application.port.out.ContactPersistence;
 import com.zup.contacts.contact.domain.ContactDomain;
