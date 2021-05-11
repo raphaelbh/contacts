@@ -4,7 +4,6 @@ import com.zup.contacts.contact.adapter.out.persistence.dynamodb.tables.ContactT
 import com.zup.contacts.contact.domain.ContactDomain;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
