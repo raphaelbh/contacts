@@ -4,10 +4,9 @@
 [![GitHub License](https://img.shields.io/github/license/raphaelbh/readme-template?style=flat-square)](#)
 [![GitHub last commit](https://img.shields.io/github/last-commit/raphaelbh/readme-template?style=flat-square)](#)
 
-Repository created to practice concepts of Hexagonal Architecture, Domain Driven Design and Git Flow with the development team.
+Repository created to practice concepts of Hexagonal Architecture and Git Flow with the development team.
 
 - [Hexagonal Architecture](https://alistair.cockburn.us/hexagonal-architecture/)
-- [DDD](https://martinfowler.com/tags/domain%20driven%20design.html)
 - [Git Flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow#:~:text=Gitflow%20is%20a%20legacy%20Git,software%20development%20and%20DevOps%20practices.)
 
 ## Requirements
@@ -41,7 +40,6 @@ $ (cd app && ./mvnw clean test)
 
 - https://alistair.cockburn.us/hexagonal-architecture/
 - https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c
-- https://martinfowler.com/tags/domain%20driven%20design.html
 
 ## Feedback
 
