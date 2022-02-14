@@ -23,10 +23,15 @@ $ docker-compose up -d
 
 Swagger: http://localhost:8080
 
+```bash
+$ curl -X GET "http://localhost:8080/contacts" -H  "accept: application/json"
+$ curl -X POST "http://localhost:8080/contacts" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"John Conor\",\"phone\":\"5591980563029\",\"email\":\"jconor@gmail.com\"}"
+```
+
 ## Running Tests
 
 ```bash
-$ (cd app && ./mvnw clean test)
+$ (cd application && ./mvnw clean test)
 ```
 
 ## Tech Stack

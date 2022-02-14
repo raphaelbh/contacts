@@ -1,8 +1,8 @@
 FROM openjdk:latest
 
-WORKDIR /app
+WORKDIR /application
 
-COPY ./app /app
+COPY ./application /application
 
 RUN ./mvnw clean package
 

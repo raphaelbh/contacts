@@ -9,9 +9,9 @@ services:
       - SERVICES=dynamodb
     volumes:
       - ./infrastructure/init-scripts:/docker-entrypoint-initaws.d
-  app:
+  application:
     build: .
-    container_name: app
+    container_name: application
     ports:
       - 8080:8080
     depends_on:
