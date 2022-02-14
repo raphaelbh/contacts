@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"
+    environment:
+      - SERVICES=dynamodb
+    volumes:
+      - ./infrastructure/init-scripts:/docker-entrypoint-initaws.d
+  app:
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    depends_on:
+      - localstack

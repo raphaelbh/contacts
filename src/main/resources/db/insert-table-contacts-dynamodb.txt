@@ -1,6 +1,0 @@
-aws dynamodb put-item \
---table-name contacts \
---item \
-'{"id": {"S": "a9d69133-3397-481d-82e4-d2a70975d947"}, "name": {"S": "John Conor"},
-"phone": {"S": "98093-3304"}, "email": {"S": "jconor@gmail.com"}}' \
---endpoint-url http://localhost:8000
