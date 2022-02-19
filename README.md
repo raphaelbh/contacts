@@ -2,7 +2,6 @@
 
 [![Project Status](https://img.shields.io/static/v1?label=project%20status&message=complete&color=success&style=flat-square)](#)
 [![GitHub License](https://img.shields.io/github/license/raphaelbh/readme-template?style=flat-square)](#)
-[![GitHub last commit](https://img.shields.io/github/last-commit/raphaelbh/readme-template?style=flat-square)](#)
 
 Repository created to practice concepts of Hexagonal Architecture and Git Flow with the development team.
 
