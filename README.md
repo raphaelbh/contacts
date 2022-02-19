@@ -1,4 +1,4 @@
-# POC Contacts
+# PoC Contacts
 
 [![Project Status](https://img.shields.io/static/v1?label=project%20status&message=complete&color=success&style=flat-square)](#)
 [![GitHub License](https://img.shields.io/github/license/raphaelbh/readme-template?style=flat-square)](#)
